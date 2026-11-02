@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+<h1>Public Entries</h1>
+
+<% entries.forEach((entry) => { %>
+
+    <h2><%= entry.title %></h2>
+    <p><%= entry.entryBody %></p>
+    <% if (user && entry.owner.toString() === user._id.toString()) { %>
+
+            <button>Edit</button>
+                <br>
+
+            <button>Delete</button>
+
+    <% } %>
+
+<% }) %>
+</body>
+</html>
