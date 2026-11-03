@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Entries</title>
+  </head>
+  <body>
     <%- include('./partials/navbar') %>
+    <h1>All Entries</h1>
 
-<h1>Public Entries</h1>
+    <% for(let oneEntry of entries){ %>
+        <h3><%= oneEntry.title %></h3>
+        <p><%= oneEntry.entryBody %></p>
 
-<% entries.forEach((entry) => { %>
-
-    <h2><%= entry.title %></h2>
-    <p><%= entry.entryBody %></p>
-    <% if (user && entry.owner.toString() === user._id.toString()) { %>
-
-            <button>Edit</button>
-                <br>
-
-            <button>Delete</button>
-
+            <a href="/entries/<%= oneEntry._id %>/edit">Edit Entry</a>
+            <form action="/entries/<%= oneEntry._id %>?_method=DELETE" method="post">
+                <button>Delete Entry</button>
+            </form>
     <% } %>
-
-<% }) %>
-</body>
+  </body>
 </html>
