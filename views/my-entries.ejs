@@ -15,6 +15,10 @@
     <h2><%= entry.title %></h2>
 
     <p><%= entry.entryBody %></p>
+    <a href="/entries/<%= oneEntry._id %>/edit">Edit Entry</a>
+            <form action="/entries/<%= oneEntry._id %>?_method=DELETE" method="post">
+                <button>Delete Entry</button>
+            </form>
 
 <% }) %>
 </body>
